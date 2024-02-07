@@ -1,0 +1,211 @@
+    *{
+        background-color: #FFB6C1
+        /* background-color: #F3CFC6 */
+    };
+
+    body{
+        margin: 0px;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #heart-container {
+        position: relative;
+        margin-top: 1px; /* Adjust the margin as needed */
+        
+    }
+    
+    .heart {
+        height: 70px;
+        width: 70px;
+        background: #f20044;
+        margin-left: 550px;
+        position: relative;
+        transform: rotate(-45deg);
+        box-shadow: -10px 10px 80px #ff0000;
+        animation: heart 0.6s linear infinite;
+        
+    }
+    
+    .heart button {
+        top: 50px;
+        left: 90%;
+        transform: translate(-50%, -50%);
+        width: 8px; /* Adjust the width as needed */
+        height: 30px; /* Adjust the height as needed */
+        cursor: crosshair;
+        
+    }
+    .buttonheart{
+        cursor: pointer;
+        color:yellowgreen;
+        z-index: -1px;
+        margin-top: 25px;
+    }    
+    
+    @keyframes heart{
+        0%{
+            transform: rotate(-45deg) scale(1.07);
+        }
+        80%{
+            transform: rotate(-45deg) scale(1.01);
+        }
+        100%{
+            transform: rotate(-45deg) scale(0.9);
+        }
+    }
+
+    .heart:before{
+    content: '';
+    position: absolute;
+    height: 70px;
+        width: 70px;
+        background: #f20044;
+        margin-left: -35px;
+        top: -50%;
+        border-radius: 50px;
+        box-shadow: -10px -10px 70px #ff0000;
+
+    }
+
+    .heart:after{
+        content: '';
+        position: absolute;
+        height: 70px;
+            width: 70px;
+            background: #f20044;
+            margin-left: -35px;
+            right: -50%;
+            border-radius: 50px;
+            box-shadow: 10px 10px 70px #ff0000;
+
+        }
+        body {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #e74c3c;
+        }
+
+        #container {
+            position: relative;
+            
+            
+        }
+
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        input {
+            margin: 10px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor:pointer;
+        }
+
+        #message {
+            font-size: 9px;
+            margin-top: 20px;
+            background-color: transparent;
+        }
+        .love-message {
+            font-size: 4px;
+            margin-top: 20px;
+            background-color: transparent;
+            display: inline-block;
+            color: #e74c3c;
+        }
+        .love-result {
+            font-size: 5px;
+            margin-top: 200px;
+            background-color: transparent;
+            display: inline-block;
+            margin-bottom: 50px;
+            font-size: small;
+        }
+        #loading {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #loading img {
+            width: 50px; /* Adjust the size as needed */
+        }
+
+        #audioPlayer {
+            display: none;
+        }
+        #wompwomp{
+            display: none;
+        }
+        #yippee{
+            display: none;
+        }
+        #james{
+                position: relative;
+                top: 100px;
+                left: 450px;
+                width: 300px;
+                height: 200px;
+                animation: james 5s linear infinite;
+                display: none;
+                
+        }
+        @keyframes james {
+            0% {
+                top: 0px;
+                left: 900px;
+            }
+            50% {
+                top: 0px;
+                left: -1000px;
+            }
+            100% {
+                top: 0px;
+                left: -1000px;
+            }
+        }
+
+        /* .heart {
+            margin-top: 20px; /* Adjust the margin as needed 
+        } */
+
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+        } 
+
+        #popupContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+        } 
+        
+        #navigation{
+            margin-bottom: 500px;
+            color: #e74c3c;
+        }

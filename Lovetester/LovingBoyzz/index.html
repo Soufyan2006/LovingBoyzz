@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Tester</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #james {
+            display: none; /* Hide the video by default */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Love Tester &#9829;</h1>
+
+    <label for="yourName">Your Name:</label>
+    <input type="text" id="yourName">
+
+    <label for="partnerName">Partner's Name:</label>
+    <input type="text" id="partnerName">
+
+    <button onclick="calculateLove()">Calculate Love</button>
+
+    <div id="container">
+        <div id="result"></div>
+        <div id="message"></div>
+        <div id="loading">
+            <img src="songs/loading.gif" alt="Loading...">
+        </div>
+    </div>
+
+    <audio id="audioPlayer" controls>
+        <source src="songs/Kiss Sound Effect.mp3" type="audio/mp3"> 
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="wompwomp" controls>
+        <source src="songs/Womp Womp Womp sound effect.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="yippee" controls>
+        <source src="songs/CROWD CHEER SOUND EFFECT.mp3" type="audio/mp3">
+    </audio>
+
+    <video id="james" controls>
+        <source src="songs/James Charles： ＂Whoomp Whoomp Whoomp Yeahyeahyeah Yeahyeahyeah＂.mp4" type="video/mp4">
+        <source src="songs/James Charles： ＂Whoomp Whoomp Whoomp Yeahyeahyeah Yeahyeahyeah＂.ogg" type="video/ogg">
+    </video>
+
+    <div id="popup">
+        <p id="popupContent"></p>
+    </div>
+
+    <div id="message" class="love-message"></div>
+    <div id="result" class="love-result"></div>
+
+    <script>
+
+        function calculateLove() {
+            var yourName = document.getElementById('yourName').value;
+            var partnerName = document.getElementById('partnerName').value;
+           
+            var resultElement = document.getElementById('result');
+    resultElement.className = 'love-result'; // Add a class to the element
+
+
+            if (yourName && partnerName) {
+                // Show loading GIF
+                document.getElementById('loading').style.display = 'block';
+                
+
+                // Delay for simulation purposes (you can remove this in your actual code)
+                setTimeout(function () {
+                    var lovePercentage = Math.floor(Math.random() * 101); // Generate a random love percentage between 0 and 100
+                    var result = yourName + " and " + partnerName + "'s love is " + lovePercentage + "%!";
+
+                    
+                    // Hide loading GIF 
+                    document.getElementById('loading').style.display = 'none';
+
+                    // Display different messages based on the love percentage
+                    var messageElement = document.getElementById('message');
+                    if (lovePercentage > 50 && lovePercentage <= 70) {
+                        messageElement.innerHTML = 'Honeymoon!';
+                        messageElement.className = 'love-result';
+                        document.getElementById('james').pause();
+                        document.getElementById('james').currentTime = 0;
+                        document.getElementById('wompwomp').pause();
+                        document.getElementById('wompwomp').currentTime = 0;
+                        document.getElementById('audioPlayer').pause();
+                        document.getElementById('audioPlayer').currentTime = 0;
+                        document.getElementById('yippee').play();
+                        
+                    } else if (lovePercentage > 70) {
+                        messageElement.innerHTML = 'hly7 fuck!';
+                        messageElement.className = 'love-result';
+                        // Play the song when love percentage is above 70%
+                        document.getElementById('james').pause();
+                        document.getElementById('james').currentTime = 0;
+                        document.getElementById('audioPlayer').play();
+                        document.getElementById('wompwomp').pause();
+                        document.getElementById('wompwomp').currentTime = 0;
+                        document.getElementById('yippee').pause();
+                        document.getElementById('yippee').currentTime = 0;
+                    } else {
+                        messageElement.innerHTML = 'Try with someone else. 😢';
+                        messageElement.className = 'love-result';
+                        document.getElementById('james').pause();
+                        document.getElementById('james').currentTime = 0;
+                        document.getElementById('audioPlayer').pause();
+                        document.getElementById('audioPlayer').currentTime = 0;
+                        document.getElementById('yippee').pause();
+                        document.getElementById('yippee').currentTime = 0;
+                        document.getElementById('wompwomp').play();
+                    }
+
+                    // Display the result in front of the heart
+                    document.getElementById('result').innerHTML = result;
+
+                    // Check if either the yourName or partnerName contains certain names
+                    var specialNames = ['james charles', 'adil', 'jesse', 'owen', 'imran', 'jayden', 'jabir']; 
+                    var isSpecialName = specialNames.some(function(name) {
+                        return yourName.toLowerCase().includes(name) || partnerName.toLowerCase().includes(name);
+                    });
+
+                    if (isSpecialName) {
+                        // Show and play the 'james' video
+                        document.getElementById('james').style.display = 'block';
+                        document.getElementById('james').play();
+                    }
+
+                    // var imieowen = ['imie','owen']; 
+                    // var imieowen = imieowen.some(function(name) {
+                    //     return yourName.toLowerCase().includes(name) || partnerName.toLowerCase().includes(name);
+                    // });
+
+                    // if (imieowen) {
+                    //     // Show and play the 'james' video
+                    //     alert('jajajajaj')
+                    // } voor de easter egg
+
+                }, 1000); // Simulate a delay of 1 second (1000 milliseconds)
+            } else {
+                alert('Please enter both names to calculate love.');
+            }
+        }
+
+        function onHeartButtonClick() {
+            alert('Button inside the heart clicked!');
+        }
+    </script>
+        <div id="heart-container">
+            <div class="heart"></div>
+            <button onclick="onHeartButtonClick()" class="buttonheart">Verstuur Brief?</button>
+        </div>
+
+    <div class="music-container" id="music-container">
+        <div class="music-info">
+        <h4 id="title"></h4>
+        <div class="progress-container" id="progress-container">
+        <div class="progress" id="progress"></div>
+        </div>
+        </div>
+         
+              <audio src="music/ukulele.mp3" id="audio"></audio>
+         
+              <div class="img-container">
+        <img src="images/ukulele.jpg" alt="music-cover" id="cover" />
+        </div>
+        <div class="navigation">
+        <button id="prev" class="action-btn">
+        <i class="fas fa-backward"></i>
+        </button>
+        <button id="play" class="action-btn action-btn-big">
+        <i class="fas fa-play"></i>
+        </button>
+        <button id="next" class="action-btn">
+        <i class="fas fa-forward"></i>
+        </button>
+        </div>
+        </div>
+
+    <script>
+const musicContainer = document.getElementById('music-container');
+
+const playBtn = document.getElementById('play');
+
+const prevBtn = document.getElementById('prev');
+
+const nextBtn = document.getElementById('next');
+ 
+const audio = document.getElementById('audio');
+
+const progress = document.getElementById('progress');
+
+const progressContainer = document.getElementById('progress-container');
+
+const title = document.getElementById('title');
+
+const cover = document.getElementById('cover');
+
+const currTime = document.querySelector('#currTime');
+
+const durTime = document.querySelector('#durTime');
+ 
+// Song titles
+
+const songs = ['hey', 'summer', 'ukulele'];
+ 
+// Keep track of song
+
+let songIndex = 2;
+ 
+// Initially load song details into DOM
+
+loadSong(songs[songIndex]);
+ 
+// Update song details
+
+function loadSong(song) {
+
+  title.innerText = song;
+
+  audio.src = `music/${song}.mp3`;
+
+  cover.src = `images/${song}.jpg`;
+
+}
+ 
+// Play song
+
+function playSong() {
+
+  musicContainer.classList.add('play');
+
+  playBtn.querySelector('i.fas').classList.remove('fa-play');
+
+  playBtn.querySelector('i.fas').classList.add('fa-pause');
+ 
+  audio.play();
+
+}
+ 
+// Pause song
+
+function pauseSong() {
+
+  musicContainer.classList.remove('play');
+
+  playBtn.querySelector('i.fas').classList.add('fa-play');
+
+  playBtn.querySelector('i.fas').classList.remove('fa-pause');
+ 
+  audio.pause();
+
+}
+ 
+// Previous song
+
+function prevSong() {
+
+  songIndex--;
+ 
+  if (songIndex < 0) {
+
+    songIndex = songs.length - 1;
+
+  }
+ 
+  loadSong(songs[songIndex]);
+ 
+  playSong();
+
+}
+ 
+// Next song
+
+function nextSong() {
+
+  songIndex++;
+ 
+  if (songIndex > songs.length - 1) {
+
+    songIndex = 0;
+
+  }
+ 
+  loadSong(songs[songIndex]);
+ 
+  playSong();
+
+}
+ 
+// Update progress bar
+
+function updateProgress(e) {
+
+  const { duration, currentTime } = e.srcElement;
+
+  const progressPercent = (currentTime / duration) * 100;
+
+  progress.style.width = `${progressPercent}%`;
+
+}
+ 
+// Set progress bar
+
+function setProgress(e) {
+
+  const width = this.clientWidth;
+
+  const clickX = e.offsetX;
+
+  const duration = audio.duration;
+ 
+  audio.currentTime = (clickX / width) * duration;
+
+}
+ 
+//get duration & currentTime for Time of song
+
+function DurTime (e) {
+
+	const {duration,currentTime} = e.srcElement;
+
+	var sec;
+
+	var sec_d;
+ 
+	// define minutes currentTime
+
+	let min = (currentTime==null)? 0:
+
+	 Math.floor(currentTime/60);
+
+	 min = min <10 ? '0'+min:min;
+ 
+	// define seconds currentTime
+
+	function get_sec (x) {
+
+		if(Math.floor(x) >= 60){
+
+			for (var i = 1; i<=60; i++){
+
+				if(Math.floor(x)>=(60*i) && Math.floor(x)<(60*(i+1))) {
+
+					sec = Math.floor(x) - (60*i);
+
+					sec = sec <10 ? '0'+sec:sec;
+
+				}
+
+			}
+
+		}else{
+
+		 	sec = Math.floor(x);
+
+		 	sec = sec <10 ? '0'+sec:sec;
+
+		 }
+
+	}
+ 
+	get_sec (currentTime,sec);
+ 
+	// change currentTime DOM
+
+	currTime.innerHTML = min +':'+ sec;
+ 
+	// define minutes duration
+
+	let min_d = (isNaN(duration) === true)? '0':
+
+		Math.floor(duration/60);
+
+	 min_d = min_d <10 ? '0'+min_d:min_d;
+ 
+ 
+	 function get_sec_d (x) {
+
+		if(Math.floor(x) >= 60){
+
+			for (var i = 1; i<=60; i++){
+
+				if(Math.floor(x)>=(60*i) && Math.floor(x)<(60*(i+1))) {
+
+					sec_d = Math.floor(x) - (60*i);
+
+					sec_d = sec_d <10 ? '0'+sec_d:sec_d;
+
+				}
+
+			}
+
+		}else{
+
+		 	sec_d = (isNaN(duration) === true)? '0':
+
+		 	Math.floor(x);
+
+		 	sec_d = sec_d <10 ? '0'+sec_d:sec_d;
+
+		 }
+
+	}
+ 
+	// define seconds duration
+
+	get_sec_d (duration);
+ 
+	// change duration DOM
+
+	durTime.innerHTML = min_d +':'+ sec_d;
+
+};
+ 
+// Event listeners
+
+playBtn.addEventListener('click', () => {
+
+  const isPlaying = musicContainer.classList.contains('play');
+ 
+  if (isPlaying) {
+
+    pauseSong();
+
+  } else {
+
+    playSong();
+
+  }
+
+});
+ 
+// Change song
+
+prevBtn.addEventListener('click', prevSong);
+
+nextBtn.addEventListener('click', nextSong);
+ 
+// Time/song update
+
+audio.addEventListener('timeupdate', updateProgress);
+ 
+// Click on progress bar
+
+progressContainer.addEventListener('click', setProgress);
+ 
+// Song ends
+
+audio.addEventListener('ended', nextSong);
+ 
+// Time of song
+
+audio.addEventListener('timeupdate',DurTime);
+    </script>
+
+
+</body>
+</html>
